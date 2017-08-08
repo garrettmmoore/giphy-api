@@ -6,7 +6,7 @@ var videoGames = ["Overwatch", "Halo", "Super Smash Brothers", "The Legend of Ze
 function displayVideoGameInfo() 
 {
 	var game = $(this).attr("data-name");
-  	var queryURL = "http://api.giphy.com/v1/gifs/search?q=" + game + "&api_key=ca85b3600e244eb399b02146bb569377&limit=10";
+  	var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + game + "&api_key=ca85b3600e244eb399b02146bb569377&limit=10";
 
   	$.ajax({
 			url: queryURL,
