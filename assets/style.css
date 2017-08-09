@@ -1,0 +1,79 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/*.button:hover 
+{background-color: #3e8e41}
+
+.button:active {
+  background-color: #3e8e41;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}*/
+
+.container{
+	background-image: url("../assets/gaming-pattern.png");
+	overflow:auto;
+}
+.gif{
+	margin-bottom: 100px;
+	border-style: solid;
+	border-radius: 15px;
+	border-color: #FC4A1A;
+	border-width: 5px;
+	
+}
+#ratingText{
+	text-transform: uppercase;
+	text-decoration: underline;
+}
+
+body{
+	text-align: center;
+	font-family: 'Fredoka One', cursive;
+	background-image: url("../assets/gaming-pattern.png");
+	overflow:auto;
+}
+.page-header{
+	color: #FC4A1A;
+}
+
+#buttons-view{
+	text-align: center;
+	vertical-align: middle;
+	margin-bottom: 50px;
+	background-color: #4ABDAC;
+	border-radius: 15px;
+	border-color: #FC4A1A;
+	border-width: 5px;
+	border-style: solid;
+	padding: 10px;
+}
+
+#video-game-form{
+	
+	vertical-align: middle;
+	margin-bottom: 50px;
+	background-color: #4ABDAC;
+	border-radius: 15px;
+	border-color: #FC4A1A;
+	border-width: 5px;
+	border-style: solid;
+	padding: 10px;
+
+}
+
+footer {
+  background-color: #f2f2f2;
+  padding: 15px;
+  clear:both;
+  bottom:0;
+  left: 0;
+  position:fixed;
+  width: 100%
+
+}
+
+

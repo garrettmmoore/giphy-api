@@ -1,12 +1,15 @@
 // Initial array of video games
-var videoGames = ["Overwatch", "Halo", "Super Smash Brothers", "The Legend of Zelda"];
+var videoGames = ["Crash Bandicoot", "Overwatch", "Halo 5", "Super Smash Brothers", "The Legend of Zelda", 
+				"Mario 64", "Super Metroid", "Street Fighter", "Elder Scrolls", "Pokemon", "League of Legends",
+				"Player Unknown's Battlegrounds", "Dota 2", "Splatoon 2", "Tekken 7", "Kingdom Hearts", "Mario Kart",
+				 "Donkey Kong Country", "Tony Hawk's Pro Skater"];
 
 
 // displayVideoGameInfo function re-renders the HTML to display the appropriate content
 function displayVideoGameInfo() 
 {
 	var game = $(this).attr("data-name");
-  	var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + game + "&api_key=ca85b3600e244eb399b02146bb569377&limit=10";
+  	var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + game + "&api_key=ca85b3600e244eb399b02146bb569377&limit=12";
 
   	$.ajax({
 			url: queryURL,
@@ -23,50 +26,47 @@ function displayVideoGameInfo()
 
       	var results = response.data;
 
-  		// Looping through each result item
-          for (var j = 0; j < results.length; j++) 
-          {
+		// Looping through each result item
+		for (var j = 0; j < results.length; j++) 
+		{
 
-        	// Creating and storing a div tag
-        	var videoGameDiv = $("<div>");
+			// Creating and storing a div tag
+			var videoGameDiv = $("<div class = 'col-md-4'>");
 
-        	// Creating a paragraph tag with the result item's rating
-			var p = $("<p>").text("Rating: " + results[j].rating);
+			// Creating a paragraph tag with the result item's rating
+			var p = $("<p id = ratingText>").text("Rating: " + results[j].rating);
 
-            // Creating and storing an image tag
-            var gameImage = $('<img>');
-            
-            // Setting the src attribute of the image to a property pulled off the result item
-            gameImage.attr("src", results[j].images.fixed_height_still.url);
-            gameImage.attr("data-still", results[j].images.fixed_height_still.url);
-            gameImage.attr("data-animate", results[j].images.fixed_height.url);
-            gameImage.attr("data-state", "still");
-            gameImage.addClass("gif", results[j]);
+			// Creating and storing an image tag
+			var gameImage = $('<img>');
 
-            // Appending the paragraph and image tag to the videoGameDiv
-            videoGameDiv.append(p);
-            videoGameDiv.append(gameImage);
+			// Setting the src attribute of the image to a property pulled off the result item
+			gameImage.attr("src", results[j].images.fixed_height_still.url);
+			gameImage.attr("data-still", results[j].images.fixed_height_still.url);
+			gameImage.attr("data-animate", results[j].images.fixed_height.url);
+			gameImage.attr("data-state", "still");
+			gameImage.addClass("gif", results[j]);
 
-            // Prependng the videoGameDiv to the HTML page in the "#gifs-appear-here" div
-            $("#video-game-view").append(videoGameDiv);
-          }
+			// Appending the paragraph and image tag to the videoGameDiv
+			videoGameDiv.append(p);
+			videoGameDiv.append(gameImage);
+
+		// Prependng the videoGameDiv to the HTML page in the "#gifs-appear-here" div
+		$("#video-game-view").append(videoGameDiv);
+		}
 		$(".gif").on("click", function() 
 		{
-		  // The attr jQuery method allows us to get or set the value of any attribute on our HTML element
-		  var state = $(this).attr("data-state");
-		  // If the clicked image's state is still, update its src attribute to what its data-animate value is.
-		  // Then, set the image's data-state to animate
-		  // Else set src to the data-still value
-		  if (state === "still") 
-		  {
-		    $(this).attr("src", $(this).attr("data-animate"));
-		    $(this).attr("data-state", "animate");
-		  } 
-		  else 
-		  {
-		    $(this).attr("src", $(this).attr("data-still"));
-		    $(this).attr("data-state", "still");
-		  }
+			var state = $(this).attr("data-state");
+
+			if (state === "still") 
+			{
+				$(this).attr("src", $(this).attr("data-animate"));
+				$(this).attr("data-state", "animate");
+			} 
+			else 
+			{
+				$(this).attr("src", $(this).attr("data-still"));
+				$(this).attr("data-state", "still");
+			}
 		});
       });
 }
@@ -82,14 +82,14 @@ function renderButtons()
 	for (var i = 0; i < videoGames.length; i++) 
 	{
 		// Then dynamicaly generating buttons for each movie in the array
-		// This code $("<button>") is all jQuery needs to create the beginning and end tag. (<button></button>)
 		var a = $("<button>");
-		// Adding a class of movie to our button
+
 		a.addClass("game");
-		// Adding a data-attribute
+
 		a.attr("data-name", videoGames[i]);
-		// Providing the initial button text
+
 		a.text(videoGames[i]);
+
 		// Adding the button to the buttons-view div
 		$("#buttons-view").append(a);
 	}
