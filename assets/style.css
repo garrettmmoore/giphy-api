@@ -1,11 +1,10 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
 }
 
-
-.gif{
+.gif {
 	margin-bottom: 100px;
 	border-style: solid;
 	border-radius: 15px;
@@ -13,28 +12,25 @@
 	border-width: 5px;
 	margin-right: 5px;
 	margin-left: 5px;
-	overflow:auto;
-
-	
+	overflow: auto;
 }
 
-
-#ratingText{
+#ratingText {
 	text-transform: uppercase;
 	text-decoration: underline;
 }
 
-body{
+body {
 	text-align: center;
 	font-family: 'Fredoka One', cursive;
 	background-image: url("../assets/gaming-pattern.png");
-
 }
-.page-header{
+
+.page-header {
 	color: #FC4A1A;
 }
 
-#buttons-view{
+#buttons-view {
 	text-align: center;
 	vertical-align: middle;
 	margin-bottom: 50px;
@@ -46,8 +42,7 @@ body{
 	padding: 10px;
 }
 
-#video-game-form{
-	
+#video-game-form {
 	vertical-align: middle;
 	margin-bottom: 50px;
 	background-color: #4ABDAC;
@@ -56,18 +51,14 @@ body{
 	border-width: 5px;
 	border-style: solid;
 	padding: 10px;
-
 }
 
 footer {
-  background-color: #f2f2f2;
-  padding: 15px;
-  clear:both;
-  bottom:0;
-  left: 0;
-  position:fixed;
-  width: 100%
-
+	background-color: #f2f2f2;
+	padding: 15px;
+	clear: both;
+	bottom: 0;
+	left: 0;
+	position: fixed;
+	width: 100%
 }
-
-

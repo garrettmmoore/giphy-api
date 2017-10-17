@@ -1,39 +1,35 @@
-
 // Initial array of video games
-var videoGames = ["Pokemon", "Overwatch", "Halo 5", "Super Smash Brothers", "The Legend of Zelda", 
-				"Mario 64", "Super Metroid", "Street Fighter", "Elder Scrolls", "Crash Bandicoot", "League of Legends",
-				"Player Unknown's Battlegrounds", "Dota 2", "Splatoon 2", "Tekken 7", "Kingdom Hearts", "Mario Kart",
-				 "Donkey Kong Country", "Tony Hawk's Pro Skater"];
+var videoGames = ["Pokemon", "Overwatch", "Halo 5", "Super Smash Brothers", "The Legend of Zelda",
+	"Mario 64", "Super Metroid", "Street Fighter", "Elder Scrolls", "Crash Bandicoot", "League of Legends",
+	"Player Unknown's Battlegrounds", "Dota 2", "Splatoon 2", "Tekken 7", "Kingdom Hearts", "Mario Kart",
+	"Donkey Kong Country", "Tony Hawk's Pro Skater"
+];
 
 // displayVideoGameInfo function re-renders the HTML to display the appropriate content
-function displayVideoGameInfo() 
-{
+function displayVideoGameInfo() {
 	var game = $(this).attr("data-name");
-  	var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + game + "&api_key=ca85b3600e244eb399b02146bb569377&limit=12";
+	var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + game + "&api_key=ca85b3600e244eb399b02146bb569377&limit=12";
 
-  	$.ajax({
+	$.ajax({
 			url: queryURL,
 			method: "GET"
 		})
 
-  		.done(function(response) 
-  		{
-  			console.log(queryURL);
+		.done(function (response) {
+			console.log(queryURL);
 			console.log(response);
 
 			// clear the contents
 			$("#video-game-view").empty();
 
-	      	var results = response.data;
+			var results = response.data;
 
 			// Looping through each result item
-			for (var j = 0; j < results.length; j++) 
-			{
+			for (var j = 0; j < results.length; j++) {
 				var videoGameDiv = $("<div class = 'col-md-4'>");
 
 				// Creating a paragraph tag with the result item's rating
 				var p = $("<p id = ratingText>").text("Rating: " + results[j].rating);
-
 
 				var gameImage = $('<img>');
 
@@ -48,35 +44,28 @@ function displayVideoGameInfo()
 				videoGameDiv.append(p);
 				videoGameDiv.append(gameImage);
 
-
 				$("#video-game-view").append(videoGameDiv);
 			}
 
-			$(".gif").on("click", function() 
-			{
+			$(".gif").on("click", function () {
 				var state = $(this).attr("data-state");
 
-				if (state === "still") 
-				{
+				if (state === "still") {
 					$(this).attr("src", $(this).attr("data-animate"));
 					$(this).attr("data-state", "animate");
-				} 
-				else 
-				{
+				} else {
 					$(this).attr("src", $(this).attr("data-still"));
 					$(this).attr("data-state", "still");
 				}
 			});
-      });
+		});
 }
 
 // Function for displaying video game data
-function renderButtons() 
-{
+function renderButtons() {
 	$("#buttons-view").empty();
 
-	for (var i = 0; i < videoGames.length; i++) 
-	{
+	for (var i = 0; i < videoGames.length; i++) {
 		var a = $("<button>");
 
 		a.addClass("game");
@@ -90,8 +79,7 @@ function renderButtons()
 }
 
 // This function handles events where a video game button is clicked
-$("#add-video-game").on("click", function(event) 
-{
+$("#add-video-game").on("click", function (event) {
 	event.preventDefault();
 
 	// This line grabs the input from the textbox
@@ -107,18 +95,3 @@ $(document).on("click", ".game", displayVideoGameInfo);
 
 // Calling the renderButtons function to display the intial buttons
 renderButtons();
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
